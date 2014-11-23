@@ -1,0 +1,62 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+
+	<form class="form-horizontal" role="form" ng-submit="save()" name="ticketForm">
+		<div class="form-group">
+			<label for="inputTitle" class="col-sm-2 control-label">Title</label>
+			<div class="col-sm-10">
+				<input type="text" id="inputTitle" class="form-control" placeholder="Enter title" ng-model="ticket.title" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputAuthor" class="col-sm-2 control-label">Author</label>
+			<div class="col-sm-10">
+				<input type="text" id="inputAuthor" class="form-control" placeholder="Enter author" ng-model="ticket.author" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputDescription" class="col-sm-2 control-label">Description</label>
+			<div class="col-sm-10">
+				<textarea class="form-control" rows="10" id="inputDescription" placeholder="Enter description" ng-model="ticket.description" required></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputEnvironment" class="col-sm-2 control-label">Environment</label>
+			<div class="col-sm-10">
+				<select id="inputEnvironment" class="form-control" ng-model="ticket.environment" required>
+					<option>Production</option>
+					<option>UAT</option>
+					<option>iAT</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-model="ticket.dbaValidation"> DBA Validation
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-model="ticket.createTicket"> Create Hosting SD Ticket
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-primary" ng-disabled="ticketForm.$invalid">Submit</button>
+				<button type="button" class="btn btn-default" ng-click="destroy(ticket)" ng-show="ticket._id">Delete</button>
+				<a class="btn btn-link" ng-href="/ticket">Cancel</a>
+			</div>
+		</div>
+	</form>
+
+</div>

@@ -1,0 +1,27 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+
+	<!-- Search bar -->
+	<div class="panel panel-default">
+		<div class="panel-heading">Ticket Search</div>
+		<div class="panel-body">
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+	</div>
+
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="ticket in tickets">
+			<strong>{{ticket.title}}</strong><br>
+			<span class="text-muted">{{ticket.description | limitTo: 20 }}{{ticket.description.length > 20 ? '...' : ''}}</span>
+			<span class="text-muted">{{ticket.date | date: 'medium'}}</span>
+			<a ng-click="deleteTicket(ticket)"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+		</li>
+	</ul>
+
+</div>
