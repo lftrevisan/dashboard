@@ -21,22 +21,20 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>Author</th>
 				<th>Title</th>
-				<th>Description</th>
+				<th>Author</th>
 				<th>Created Date</th>
 				<th>Status</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="ticket in tickets | filter:search | orderBy:'created'">
-				<td>{{ticket.author}}</td>
 				<td><a ng-href="/ticket/edit/{{ticket._id}}">{{ticket.title}}</a></td>
-				<td>{{ticket.description | limitTo: 20 }}{{ticket.description.length > 20 ? '...' : ''}}</td>
+				<td>{{ticket.author}}</td>
 				<td>{{ticket.date | date: 'medium'}}</td>
-				<td ng-if="ticket.status < 0"><span class="glyphicon glyphicon-thumbs-down"></span> Failed</td>
-				<td ng-if="ticket.status >= 0 && ticket.status < 2"><span class="glyphicon glyphicon-refresh"></span> In-progress</td>
-				<td ng-if="ticket.status == 2"><span class="glyphicon glyphicon-thumbs-up"></span> Approved</td>
+				<td ng-if="ticket.status < 0">Failed</td>
+				<td ng-if="ticket.status >= 0 && ticket.status < 2">In-progress</td>
+				<td ng-if="ticket.status == 2">Approved</td>
 			</tr>
 		</tbody>
 	</table>

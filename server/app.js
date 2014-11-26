@@ -8,6 +8,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
+var multer  = require('multer');
 var mongoose = require('mongoose');
 var config = require('./config/environment');
 
@@ -19,6 +20,13 @@ if(config.seedDB) { require('./config/seed'); }
 
 // Setup server
 var app = express();
+app.use(multer({
+	dest: './uploads/', 
+	rename: function (fieldname, filename) {
+  		return filename;
+  	}
+}));
+
 var server = require('http').createServer(app);
 require('./config/express')(app);
 require('./routes')(app);

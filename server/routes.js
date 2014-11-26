@@ -5,10 +5,12 @@
 'use strict';
 
 var errors = require('./components/errors');
+var express = require('express');
 
 module.exports = function(app) {
 
   // Insert routes below
+  app.use('/api/fileUpload', require('./api/fileUpload'));
   app.use('/api/tickets', require('./api/ticket'));
   app.use('/api/things', require('./api/thing'));
   

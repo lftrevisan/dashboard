@@ -30,12 +30,12 @@ exports.create = function(req, res) {
 
 // Updates an existing ticket in the DB.
 exports.update = function(req, res) {
-  console.log(req.files);
   if(req.body._id) { delete req.body._id; }
   Ticket.findById(req.params.id, function (err, ticket) {
     if (err) { return handleError(res, err); }
     if(!ticket) { return res.send(404); }
     var updated = _.merge(ticket, req.body);
+    updated.files = req.body.files;
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, ticket);

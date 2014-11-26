@@ -9,7 +9,7 @@ var TicketSchema = new Schema({
   author: String,
   environment: String,
   status: { type: Number, default: 0 },
-  files: [{ url: String }],
+  files: [{ fileName: String }],
   date: { type: Date, default: Date.now }
 });
 

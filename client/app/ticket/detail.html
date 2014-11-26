@@ -49,9 +49,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group" ng-repeat="file in ticket.files">
+			<div class="col-sm-offset-2 col-sm-10">
+				<a href="/uploads/{{file.fileName}}">{{file.fileName}}</a> <div class="glyphicon glyphicon-trash" ng-click="onFileDelete(file)"/>
+			</div>
+		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
+				<div class="btn btn-default" ng-file-select="onFileSelect($files)" multiple>Upload File</div>
 				<button type="submit" class="btn btn-primary" ng-disabled="ticketForm.$invalid">Submit</button>
 				<button type="button" class="btn btn-default" ng-click="destroy(ticket)" ng-show="ticket._id">Delete</button>
 				<a class="btn btn-link" ng-href="/ticket">Cancel</a>
